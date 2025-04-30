@@ -10,4 +10,4 @@ RUN apt-get update && apt-get install -y \
 
 RUN pip install pymongo redis  requests --break-system-packages
 
-CMD ["python3", "uniforme_LFU.py"]
+CMD ["python3", "-u", "uniforme_LFU.py"]

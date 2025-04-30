@@ -5,3 +5,5 @@
 - Paso 4: usar el comando docker-compose up
 
 Con eso ya estara en funcionamiento.
+
+Para mayor comodidad, recomiendo utilizar docker desktop.
