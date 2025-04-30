@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo
+    restart: always
+    container_name: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin123
+    ports:
+      - "27017:27017"
+
+  redis:
+    image: redis
+    restart: always
+    container_name: redis
+    ports:
+      - "6379:6379"
+
+  scraper:
+    build: ./scraper
+    container_name: scraper
+    depends_on:
+      - mongo
+      - redis
+
+  gaussiana_fifo:
+    build: ./normal_FIFO
+    container_name: gaussiana_fifo
+    depends_on:
+      - mongo
+      - redis
+
+  gaussiana_lfu:
+    build: ./normal_LFU
+    container_name: gaussiana_lfu
+    depends_on:
+      - mongo
+      - redis
+
+  uniforme_fifo:
+    build: ./uniforme_FIFO
+    container_name: uniforme_fifo
+    depends_on:
+      - mongo
+      - redis
+
+  uniforme_lfu:
+    build: ./uniforme_LFU
+    container_name: uniforme_lfu
+    depends_on:
+      - mongo
+      - redis
