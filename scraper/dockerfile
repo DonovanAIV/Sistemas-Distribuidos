@@ -10,4 +10,4 @@ RUN apt-get update && apt-get install -y \
 
 RUN pip install pymongo requests --break-system-packages
 
-CMD ["python3", "scraper.py"]
+CMD ["python3", "-u","scraper.py"]
